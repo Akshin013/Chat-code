@@ -1,16 +1,27 @@
 const messagesDiv = document.getElementById("messages-div")
-const inp = document.getElementById("input") 
+const inp = document.getElementById("input")    
 const  sendBtn = document.getElementById("send-btn")
 let messArr = []
 const peopleAddBtn = document.getElementById("people-add-btn")
 const role = document.getElementById("roleChangeInp")
 
-const peopleCh = ""
 
-peopleAddBtn.addEventListener("click", () => {
-    console.log(role.value);
-    
-})
+
+const sendMeess = () => {
+    console.log(inp.value);
+    let m = inp.value
+    axios.post((ENDPOINT), {
+        message: m
+    })
+    inp.value=""
+    messagesDiv.innerHTML=""
+    getMessages()
+}
+
+
+
+sendBtn.addEventListener("click", sendMeess)
+
 
 
 const ENDPOINT = "http://localhost:3000/messages    "
